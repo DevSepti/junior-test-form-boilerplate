@@ -1,9 +1,17 @@
-import { ImageListWrapper } from './styles';
+import { ImageItem } from '../ImageItem';
 
-export const ImageList = () => {
+import { ImageLi, ImageListStyle, ImageListWrapper } from './styles';
+
+export const ImageList = ({ photos, onDeleteItem }) => {
   return (
     <ImageListWrapper>
-      <li>Image1</li>
+      <ImageListStyle>
+        {photos.map((photo) => (
+          <ImageLi key={photo.id}>
+            <ImageItem photo={photo} onDelete={() => onDeleteItem(photo.id)} />
+          </ImageLi>
+        ))}
+      </ImageListStyle>
     </ImageListWrapper>
   );
 };
